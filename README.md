@@ -1,0 +1,2 @@
+# Bankdata-forberedelse
+ 
