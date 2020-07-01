@@ -52,4 +52,25 @@ public class HelloControllerTest {
         return builder;
     }
 
+    @Test
+    public void getList() throws Exception {
+        ResultActions actions = mvc.perform(requestList());
+        actions.andExpect(status().isOk());
+    }
+
+    @Test
+    public void checkListContent() throws Exception {
+
+        ResultActions actions = mvc.perform(requestList());
+        actions.andExpect(content().string(equalTo("[\"first\",\"second\",\"third\",\"fourth\"]")));
+
+    }
+
+    private RequestBuilder requestList() {
+        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.get("/list");
+        builder = builder.accept(MediaType.APPLICATION_JSON);
+
+        return builder;
+    }
+
 }
